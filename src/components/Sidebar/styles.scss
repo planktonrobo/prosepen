@@ -1,0 +1,24 @@
+
+@media (min-width:768px){
+    .sidebar {
+        position: fixed;
+        max-width: 322px;
+        top: 100px;
+       
+    }
+    }
+    
+@media (max-width:768px){
+    .responsive{
+        font-size: .8rem
+    }
+}
+
+.filterSelected{
+    text-decoration: underline black;
+}
+
+.filterHoping{
+    text-decoration: underline gray;
+}
+      

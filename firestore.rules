@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  function isUnmodified(key) {
+  	return request.resource.data[key] == resource.data[key] }
+
+    match /pieces/{pieceID} {
+      
+      
+      allow read: if resource.data.published == true || resource.data.userId == request.auth.uid
+      allow create: if request.resource.data.userId == request.auth.uid 
+      allow delete: if request.auth.uid == resource.data.userId 
+     
+      allow update: if request.resource.data.userId == request.auth.uid || request.auth.uid != null && isUnmodified('content') && isUnmodified('title') && isUnmodified('dateCreated') && isUnmodified('published') && isUnmodified('userId')
+    }
+    match /users/{userId} {
+      allow read, create;
+      allow delete: if request.auth != null && request.auth.uid == resource.data.userID;
+      allow update: if request.resource.data.userId == request.auth.uid || request.auth.uid != null && isUnmodified('bio') && isUnmodified('emailAddress') && isUnmodified('featured') && isUnmodified('fullName') && isUnmodified('picture') && isUnmodified('username') && isUnmodified('userId')
+ 
+    }
+    match /notifications/{notifID} {
+      allow read;
+      allow create: if request.resource.data.from == request.auth.uid 
+      allow delete: if request.resource.data.from == request.auth.uid
+      allow update: if request.resource.data.to == request.auth.uid &&
+      request.resource.data.to == resource.data.to && request.resource.data.from == resource.data.from
+    }
+  }
+}

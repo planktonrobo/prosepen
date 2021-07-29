@@ -1,0 +1,56 @@
+.is-active {
+  background-color: black;
+  color: white;
+}
+.ProseMirror:focus {
+  outline: none;
+}
+.an {
+  border: none;
+  font-size: 2.5rem;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-weight: 500;
+  line-height: 1.1;
+  font-weight: 2em;
+  color: #212529;
+  width: 100%;
+  resize: none;
+  text-align: left;
+  overflow: hidden;
+}
+::placeholder {
+  color: #ced4da;
+}
+::-webkit-resizer {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .container-smooth {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .container-smooth {
+    min-width: 100%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  text-align: left;
+  font-family: "Lora", serif;
+}
